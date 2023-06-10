@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Update Record</a>
+</p>
+<table class="table" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                Question1
+            </th>
+            <th>
+                Question2
+            </th>
+            <th>
+                Question3
+            </th>
+            <th>
+                Car1Q
+            </th>
+            <th>
+                Car2Q
+            </th>
+            <th>
+                Bike1Q
+            </th>
+            <th>
+                Bike2Q
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section scripts{
+    <script src="~/js/datatable_file.js"></script>
+}

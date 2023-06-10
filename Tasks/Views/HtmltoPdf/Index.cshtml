@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<button id="btnPdf" class="btn btn-primary">Generate PDF</button>
+
+<div id="pdfContainer" style="text-align:center;">
+    <h1>Student List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th style="border:1px solid black;">Student Id</th>
+                <th style="border:1px solid black;">Name</th>
+                <th style="border:1px solid black;">Roll</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border:1px solid black;">1</td>
+                <td style="border:1px solid black;">Gulshan</td>
+                <td style="border:1px solid black;">1001</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid black;">2</td>
+                <td style="border:1px solid black;">Shivam</td>
+                <td style="border:1px solid black;">1002</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $("#btnPdf").click(function () {
+        var sHtml = $("#pdfContainer").html();
+        sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+        window.open('../HtmlToPdf/GeneratePdf?html=' + sHtml, '_blank');
+    });
+</script>

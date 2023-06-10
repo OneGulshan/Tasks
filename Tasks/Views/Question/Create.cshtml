@@ -1,0 +1,93 @@
+﻿@model Tasks.Models.Question
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Question</h4>
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-controller="Question">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <input asp-for="radio" id="Yes" type="radio" name="radio" value="1" />
+                <lable>Yes</lable>
+
+                <input asp-for="radio" id="No" type="radio" name="radio" value="2" />
+                <lable>No</lable>
+            </div><br />
+
+            <div id="div">
+                <div class="form-group">
+                    <label asp-for="Question1" class="control-label">Q1:- What is C#?</label>
+                    <input asp-for="Question1" class="form-control" />
+                    <span asp-validation-for="Question1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Question2" class="control-label">Q2:- What is the difference between static, public, and void?</label>
+                    <input asp-for="Question2" class="form-control" />
+                    <span asp-validation-for="Question2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Question3" class="control-label">Q3:- What is an object?</label>
+                    <input asp-for="Question3" class="form-control" />
+                    <span asp-validation-for="Question3" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+
+            <div>
+                <lable>Car</lable>
+                <input asp-for="Car" type="checkbox" />
+                <lable>Bike</lable>
+                <input asp-for="Bike" type="checkbox" />
+            </div><br />
+
+            <div id="div1">
+                <level>Car heading</level>
+                <div class="form-group">
+                    <label asp-for="Car1Q" class="control-label">Q1:-  How often should I check my tire pressure?</label>
+                    <input asp-for="Car1Q" class="form-control" />
+                    <span asp-validation-for="Car1Q" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Car2Q" class="control-label">Q2:- When should I change my transmission fluid?</label>
+                    <input asp-for="Car2Q" class="form-control" />
+                    <span asp-validation-for="Car2Q" class="text-danger"></span>
+                </div><br />
+            </div>
+
+            <div id="div2">
+                <level>Bike heading</level>
+                <div class="form-group">
+                    <label asp-for="Bike1Q" class="control-label">Q1:- When was the first internal combustion motorcycle fuelled by pet?</label>
+                    <input asp-for="Bike1Q" class="form-control" />
+                    <span asp-validation-for="Bike1Q" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Bike2Q" class="control-label">Q2:- In 1894, which model became the first series production motorcycle in the world?</label>
+                    <input asp-for="Bike2Q" class="form-control" />
+                    <span asp-validation-for="Bike2Q" class="text-danger"></span>
+                </div><br />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update" asp-action="Create" asp-controller="Question" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
