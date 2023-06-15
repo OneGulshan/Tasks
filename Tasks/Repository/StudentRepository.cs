@@ -38,12 +38,14 @@ namespace Tasks.Repository
             if(stdObj == null)
             {
                 _studentTable.InsertOne(student);
+                return "Save";
             }
             else
             {
                 _studentTable.ReplaceOne(_ => _.Id == student.Id, student);
+                return "Save";
             }
-            return "Save";
+
         }
     }
 }
