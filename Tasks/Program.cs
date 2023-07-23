@@ -1,5 +1,9 @@
+using AutoMapper;
+using Customerproject.Rpository;
 using Microsoft.EntityFrameworkCore;
+using Studentproject.Repository;
 using Tasks.Data;
+using Tasks.IRepository;
 using Tasks.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +22,9 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddTransient<ICustomer, Customer_Repository>();
+builder.Services.AddTransient<ICountry, Country_Repository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

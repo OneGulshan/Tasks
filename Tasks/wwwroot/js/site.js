@@ -4,6 +4,7 @@
 
 $(function () {
     var PlaceHolderElement = $('#PlaceHolderHere');
+    debugger
     $('button[data-toggle="ajax-modal"]').click(function (event) {
 
         var url = $(this).data('url');
@@ -14,7 +15,94 @@ $(function () {
             //    GetMenu(menuId);
             //    GetCategory(menuId, cat_id);
 
+            $('#con').empty();
+            $('#sta').empty();
+            $('#city').empty();
+            var C_Id = PlaceHolderElement.find('.hdncId').val();
+            var S_Id = PlaceHolderElement.find('.hdnsId').val();
+            var City_Id = PlaceHolderElement.find('.hdncityId').val();
+            GetCountry(C_Id);
+            Getstate(C_Id, S_Id);
+            Getcity(S_Id, City_Id);
             PlaceHolderElement.find('.modal').modal('show');
         })
     })
 })
+
+$(document).ready(function () {
+
+    $('#con').change(function () {
+        $('#sta').attr('disabled', false);
+        var id = $(this).val();
+        Getstate(id);
+    });
+    $('#sta').change(function () {
+        $('#city').attr('disabled', false);
+        var id = $(this).val();
+        Getcity(id);
+    });
+
+})
+
+function GetCountry(cid) {
+
+    $.ajax({
+        url: "/AutoMapperDashboard/Country",
+        success: function (result) {
+            $('#con').empty();
+            $('#con').append('<option value=' + 0 + ' >' + '--------Select country-------' + '</option >');
+            $.each(result, function (i, data) {
+                   if (cid == data.cid) {
+                    $('#con').append('<option value=' + data.cid + ' selected >' + data.cName + '</option >');
+                }
+                else {
+                    $('#con').append('<option value=' + data.cid + '>' + data.cName + '</option >');
+                }
+
+            });
+        }
+    });
+}
+function Getstate(cid, sid) {
+    debugger;
+    $.ajax({
+        url: '/AutoMapperDashboard/State?id=' + cid,
+        success: function (result) {
+            $('#sta').empty();
+            $('#sta').append('<option value=' + 0 + ' >' + '--------Select State-------' + '</option >');
+            $.each(result, function (i, data) {
+                debugger;
+                if (sid == data.sid) {
+
+                    $('#sta').append('<option value=' + data.sid + ' selected >' + data.sName + '</option >');
+                }
+                else {
+
+                    $('#sta').append('<option value=' + data.sId + ' >' + data.sName + '</option >');
+                }
+            });
+        }
+    });
+}
+
+function Getcity(sid, cid) {
+    debugger;
+    $.ajax({
+        url: '/AutoMapperDashboard/City?id=' + sid,
+        success: function (result) {
+            $('#city').empty();
+            $('#city').append('<option value=' + 0 + ' >' + '--------Select city-------' + '</option >');
+            $.each(result, function (i, data) {
+                debugger;
+                if (cid == data.city_Id) {
+
+                    $('#city').append('<option value=' + data.city_Id + ' selected >' + data.city_Name + '</option >');
+                }
+                else {
+
+                    $('#city').append('<option value=' + data.city_Id + ' >' + data.city_Name + '</option >');
+                }
+            });
+        }
+    });
+}

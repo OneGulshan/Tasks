@@ -1,0 +1,65 @@
+﻿@model Tasks.ViewModal.CustomerVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Std_Id" />
+            <div class="form-group">
+                <label asp-for="Std_Name" class="control-label"></label>
+                <input asp-for="Std_Name" class="form-control" />
+                <span asp-validation-for="Std_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Std_Class" class="control-label"></label>
+                <input asp-for="Std_Class" class="form-control" />
+                <span asp-validation-for="Std_Class" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Std_School" class="control-label"></label>
+                <input asp-for="Std_School" class="form-control" />
+                <span asp-validation-for="Std_School" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Std_Address" class="control-label"></label>
+                <input asp-for="Std_Address" class="form-control" />
+                <span asp-validation-for="Std_Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Std_Mobile" class="control-label"></label>
+                <input asp-for="Std_Mobile" class="form-control" />
+                <span asp-validation-for="Std_Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Std_Image" class="control-label"></label>
+                <input type="file" name="file" class="form-control"
+                       onchange="document.getElementById('imageId').src = window.URL.createObjectURL(this.files[0])" />
+                @{
+                    <img src="~/Images/@Model.Std_Image" id="imageId" class="rectengle" width="120" height="80">
+                }
+                <span asp-validation-for="Std_Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
