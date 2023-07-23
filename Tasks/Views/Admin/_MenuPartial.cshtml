@@ -1,0 +1,32 @@
+﻿@model Menu
+
+@{
+    <form asp-action="MenuCreate" asp-controller="Admin" method="post">
+        <div class="form-group">
+            @Html.HiddenFor(x =>x.MenuId)
+            <div class="modal fade" id="addMenu">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Menu</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                <span>x</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label asp-for="MenuName"></label>
+                                <input asp-for="MenuName" class="form-control" />
+                                <span asp-validation-for="MenuName" class="text-danger"></span>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" value="@ViewBag.BT" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}

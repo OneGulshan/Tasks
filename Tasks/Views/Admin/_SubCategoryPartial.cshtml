@@ -1,0 +1,50 @@
+﻿@model SubCategory
+
+@{
+    <form asp-action="SubCategoryCreate" asp-controller="Admin" method="post">
+        <div class="form-group">
+            @Html.HiddenFor(x =>x.SubCategoryId)
+            <input type="hidden" value="@Model.MenuId" class="MenuId" />
+            <input type="hidden" value="@Model.CategoryId" class="CategoryId" />
+            <div class="modal fade" id="addSubCategory">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add SubCategory</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                <span>x</span>
+                            </button>
+
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <level>MenuName</level>
+                                <select asp-for="MenuId" class="form-control" id="menu">
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <level>Categoray Name</level>
+                                <select asp-for="CategoryId" class="form-control" id="subid">
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label asp-for="SubCategoryName" class="control-label"></label>
+                                    <input asp-for="SubCategoryName" class="form-control" />
+                                    <span asp-validation-for="SubCategoryName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" value="@ViewBag.BT" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+<script src="~/js/site.js"></script>

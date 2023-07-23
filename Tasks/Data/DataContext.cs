@@ -28,5 +28,8 @@ namespace Tasks.Data
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<State> States { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
     }
 }
