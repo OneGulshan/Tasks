@@ -1,0 +1,37 @@
+@page "/employee/index"
+@model Tasks.EmployeeIndex
+
+<div class="container">
+    <div class="row">
+        <div class="col col-md-4 offset-md-4">
+            <a asp-page="./EmployeeCreate" class="btn btn-primary">Create Employee</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Job Role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model.AllEmployee)
+                {
+                    <tr>
+                        <th scope="row">@emp.Id</th>
+                        <td>@emp.FirstName</td>
+                        <td>@emp.LastName</td>
+                        <td>@emp.JobRole</td>
+                        <td>
+                            <a asp-page="./EmployeeDetails" asp-route-id="@emp.Id">Details</a> | @*EmployeeDetails Page Rendered here*@
+                            <a asp-page="./EmployeeUpdate" asp-route-id="@emp.Id">Edit</a> | 
+                            <a asp-page="./EmployeeDelete" asp-route-id="@emp.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
