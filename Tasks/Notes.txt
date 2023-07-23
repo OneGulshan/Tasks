@@ -128,4 +128,7 @@ MongoDBCrud using Student Controller
 
 Core MVC CascadeDropdownList
 -----------------------------
-CascadeDropDownListController
+
+Learn Linq in Employee Controller
+----------------------------------
+https://youtu.be/hPZ6yK8Dduw <- Learned by this
