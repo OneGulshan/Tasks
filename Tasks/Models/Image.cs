@@ -8,8 +8,8 @@ namespace Tasks.Models
     {
         [Key]
         public int Id { get; set; }
-        public string? ImagePath { get; set; }
+        public string ImagePath { get; set; }
         [NotMapped]
-        public IFormFile? ImageFile { get; set; }
+        public IFormFile ImageFile { get; set; }
     }
 }

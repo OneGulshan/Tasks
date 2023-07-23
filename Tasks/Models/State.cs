@@ -2,10 +2,11 @@
 
 namespace Tasks.Models
 {
-    public class Country
+    public class State
     {
         [Key]
+        public int Sid { get; set; }
         public int Cid { get; set; }
-        public string? CName { get; set; }
+        public string SName { get; set; }
     }
 }
