@@ -30,7 +30,7 @@
                     </td>
                     <td>
                         <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
-                            data-url="/AddCSC/EditC?id=@item.C_Id">
+                                data-url="/AddCSC/EditC?id=@item.C_Id">
                             Edit
                         </button>
 
@@ -77,7 +77,7 @@
 
                     <td>
                         <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
-                            data-url="/AddCSC/EditS?id=@item.S_Id">
+                                data-url="/AddCSC/EditS?id=@item.S_Id">
                             Edit
                         </button>|
                         @Html.ActionLink("Delete","DeleteS",new { id = item.S_Id},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
@@ -123,7 +123,7 @@
 
                     <td>
                         <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
-                            data-url="/AddCSC/EditCity?id=@item.City_Id">
+                                data-url="/AddCSC/EditCity?id=@item.City_Id">
                             Edit
                         </button>|
                         @*@Html.ActionLink("Edit","Edit",new{id=item.std_Id},new{@class ="btn btn-primary"})|*@

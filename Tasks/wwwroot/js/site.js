@@ -4,7 +4,6 @@
 
 $(function () {
     var PlaceHolderElement = $('#PlaceHolderHere');
-    debugger
     $('button[data-toggle="ajax-modal"]').click(function (event) {
 
         var url = $(this).data('url');
@@ -30,7 +29,6 @@ $(function () {
 })
 
 $(document).ready(function () {
-
     $('#con').change(function () {
         $('#sta').attr('disabled', false);
         var id = $(this).val();
@@ -52,7 +50,7 @@ function GetCountry(cid) {
             $('#con').empty();
             $('#con').append('<option value=' + 0 + ' >' + '--------Select country-------' + '</option >');
             $.each(result, function (i, data) {
-                   if (cid == data.cid) {
+                if (cid == data.cid) {
                     $('#con').append('<option value=' + data.cid + ' selected >' + data.cName + '</option >');
                 }
                 else {
@@ -64,21 +62,17 @@ function GetCountry(cid) {
     });
 }
 function Getstate(cid, sid) {
-    debugger;
     $.ajax({
         url: '/AutoMapperDashboard/State?id=' + cid,
         success: function (result) {
             $('#sta').empty();
             $('#sta').append('<option value=' + 0 + ' >' + '--------Select State-------' + '</option >');
             $.each(result, function (i, data) {
-                debugger;
                 if (sid == data.sid) {
-
                     $('#sta').append('<option value=' + data.sid + ' selected >' + data.sName + '</option >');
                 }
                 else {
-
-                    $('#sta').append('<option value=' + data.sId + ' >' + data.sName + '</option >');
+                    $('#sta').append('<option value=' + data.sid + ' >' + data.sName + '</option >');
                 }
             });
         }
@@ -86,20 +80,16 @@ function Getstate(cid, sid) {
 }
 
 function Getcity(sid, cid) {
-    debugger;
     $.ajax({
         url: '/AutoMapperDashboard/City?id=' + sid,
         success: function (result) {
             $('#city').empty();
             $('#city').append('<option value=' + 0 + ' >' + '--------Select city-------' + '</option >');
             $.each(result, function (i, data) {
-                debugger;
                 if (cid == data.city_Id) {
-
                     $('#city').append('<option value=' + data.city_Id + ' selected >' + data.city_Name + '</option >');
                 }
                 else {
-
                     $('#city').append('<option value=' + data.city_Id + ' >' + data.city_Name + '</option >');
                 }
             });
