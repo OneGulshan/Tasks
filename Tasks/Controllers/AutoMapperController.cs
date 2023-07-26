@@ -58,8 +58,8 @@ namespace Tasks.Controllers
             CountryVM con = new CountryVM();
             if (data != null)
             {
-                con.C_Name = data.CName;
-                con.C_Id = data.Cid;
+                con.CName = data.CName;
+                con.Cid = data.Cid;
                 return View("_PartialCcreate", con);
             }
             return View(data);
@@ -99,9 +99,9 @@ namespace Tasks.Controllers
             StateVm stateVm = new StateVm();
             if (sta != null)
             {
-                stateVm.S_Id = sta.Sid;
-                stateVm.S_Name = sta.SName;
-                stateVm.C_Id = sta.Cid;
+                stateVm.Sid = sta.Sid;
+                stateVm.SName = sta.SName;
+                stateVm.Cid = sta.Cid;
             }
             return PartialView("_PartialScreate", stateVm);
         }

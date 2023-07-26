@@ -29,20 +29,20 @@
                 <tr>
                     <td>
                         @{
-                            var country = Model.ListCountry.Where(x => x.C_Id == item.C_Id).Select(x => x.C_Name).FirstOrDefault();
+                            var country = Model.ListCountry.Where(x => x.Cid == item.Cid).Select(x => x.CName).FirstOrDefault();
                             <label>@country</label>
                         }
                     </td>
                     <td>
-                        <level>@item.S_Name</level>
+                        <level>@item.SName</level>
                     </td>
 
                     <td>
                         <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
-                            data-url="/AddCSC/EditS?id=@item.S_Id">
+                            data-url="/AddCSC/EditS?id=@item.Sid">
                             Edit
                         </button>|
-                        @Html.ActionLink("Delete","DeleteS",new { id = item.S_Id},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
+                        @Html.ActionLink("Delete","DeleteS",new { id = item.Sid},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
                     </td>
                 </tr>
             }

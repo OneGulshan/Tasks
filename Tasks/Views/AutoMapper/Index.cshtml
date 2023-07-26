@@ -26,16 +26,16 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.C_Name)
+                        @Html.DisplayFor(modelItem => item.CName)
                     </td>
                     <td>
                         <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
-                                data-url="/AddCSC/EditC?id=@item.C_Id">
+                                data-url="/AddCSC/EditC?id=@item.Cid">
                             Edit
                         </button>
 
                         @* <a asp-action="DeleteC" asp-route-id="@item.C_Id">Delete</a>*@
-                        @Html.ActionLink("Delete","DeleteC",new { id = item.C_Id},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
+                        @Html.ActionLink("Delete","DeleteC",new { id = item.Cid},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
                     </td>
                 </tr>
             }
@@ -67,20 +67,20 @@
                 <tr>
                     <td>
                         @{
-                            var country = Model.ListCountry.Where(x => x.C_Id == item.C_Id).Select(x => x.C_Name).FirstOrDefault();
+                            var country = Model.ListCountry.Where(x => x.Cid == item.Cid).Select(x => x.CName).FirstOrDefault();
                             <label>@country</label>
                         }
                     </td>
                     <td>
-                        <level>@item.S_Name</level>
+                        <level>@item.SName</level>
                     </td>
 
                     <td>
                         <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
-                                data-url="/AddCSC/EditS?id=@item.S_Id">
+                                data-url="/AddCSC/EditS?id=@item.Sid">
                             Edit
                         </button>|
-                        @Html.ActionLink("Delete","DeleteS",new { id = item.S_Id},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
+                        @Html.ActionLink("Delete","DeleteS",new { id = item.Sid},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
                     </td>
                 </tr>
             }
@@ -112,7 +112,7 @@
                 <tr>
                     <td>
                         @{
-                            var sta = Model.ListState.Where(x => x.S_Id == item.S_Id).Select(x => x.S_Name).FirstOrDefault();
+                            var sta = Model.ListState.Where(x => x.Sid == item.S_Id).Select(x => x.SName).FirstOrDefault();
                             <label>@sta</label>
                         }
                     </td>

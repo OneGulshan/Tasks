@@ -29,7 +29,7 @@
                 <tr>
                     <td>
                         @{
-                            var sta = Model.ListState.Where(x => x.S_Id == item.S_Id).Select(x => x.S_Name).FirstOrDefault();
+                            var sta = Model.ListState.Where(x => x.Sid == item.S_Id).Select(x => x.SName).FirstOrDefault();
                             <label>@sta</label>
                         }
                     </td>

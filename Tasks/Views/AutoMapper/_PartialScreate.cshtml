@@ -2,7 +2,7 @@
 <section>
     @{
         string actionName;
-        if (Model.S_Id != 0)
+        if (Model.Sid != 0)
         {
             actionName = "EditS";
         }
@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class=" col-md-8">
-                    @Html.HiddenFor(x=>x.S_Id)
-                    <input type="hidden" value="@Model.C_Id" class="hdncId" />
+                    @Html.HiddenFor(x=>x.Sid)
+                    <input type="hidden" value="@Model.Cid" class="hdncId" />
                     <div class="modal fade" id="Mstudent" style="background-color: #00000094;">
                         <div class="modal-dialog modal-lg ">
                             <div class="modal-content">
@@ -42,18 +42,18 @@
                                     <div class="form-group">
                                         <div class="form-group">
                                             <level>Country</level>
-                                            <select asp-for="C_Id" class="form-control" id="con">
+                                            <select asp-for="Cid" class="form-control" id="con">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>State</label>
-                                        <input asp-for="S_Name" class="form-control" />
-                                        <span asp-validation-for="S_Name" class="text-danger"></span>
+                                        <input asp-for="SName" class="form-control" />
+                                        <span asp-validation-for="SName" class="text-danger"></span>
                                     </div>
 
                                     <div class="form-group">
-                                        @if (Model.C_Id != 0)
+                                        @if (Model.Cid != 0)
                                         {
                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i>&nbspClose</button>
                                             <button type="submit" value="Update" class="btn btn-primary"><i class="bi bi-pencil"></i>&nbspUpdate</button>
