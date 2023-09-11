@@ -25,7 +25,7 @@ namespace Tasks.Controllers
 
         public JsonResult SaveStd(Student student)
         {
-            if(student.Id != null)
+            if (student.Id != null)
             {
                 var std = _stdRepo.Save(student);
                 return Json(std);

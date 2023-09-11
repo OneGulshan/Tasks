@@ -101,7 +101,7 @@
             LoadStudents();
         });
     }
-    
+
     function Edit(stdId) {
         var std = _students.find(_ => _.id == stdId);
         $("#txtStdId").val(std.id);
@@ -109,15 +109,14 @@
         $("#txtCardNumber").val(std.cardNumber);
         $("#txtSalary").val(std.salary);
     }
-    
+
     function Delete(stdId) {
         var std = _students.find(_ => _.id == stdId);
         $.ajax({
             url: "/MongoDB/DeleteStd?stdId=" + std.id,
             method: 'DELETE'
-        })
-            .done(function (data) {
-                LoadStudents();
-            });
+        }).done(function (data) {
+            LoadStudents();
+        });
     }
 </script>
