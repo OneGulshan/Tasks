@@ -42,7 +42,7 @@ namespace Tasks.Controllers
         public IActionResult Create(Employee employee)
         {
             SqlConnection con = new(_configuration.GetConnectionString("Con"));
-            SqlCommand cmd = new("Insert into Employee('FirstName','LastName','JobRole') value('" + employee.FirstName + "','" + employee.LastName + "','" + employee.JobRole + "')", con);
+            SqlCommand cmd = new("Insert into Employee('FirstName','LastName','JobRole') values('" + employee.FirstName + "','" + employee.LastName + "','" + employee.JobRole + "')", con);
             return RedirectToAction(nameof(Index));
         }
     }
