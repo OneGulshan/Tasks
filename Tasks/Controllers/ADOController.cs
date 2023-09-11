@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
+using Tasks.Models;
 
 namespace Tasks.Controllers
 {
@@ -30,6 +31,19 @@ namespace Tasks.Controllers
                 employees.Add(employee);
             }
             return View(employees);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            SqlConnection con = new(_configuration.GetConnectionString("Con"));
+            SqlCommand cmd = new("Insert into Employee('FirstName','LastName','JobRole') value('" + employee.FirstName + "','" + employee.LastName + "','" + employee.JobRole + "')", con);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
