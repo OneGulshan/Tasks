@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using com.sun.xml.@internal.bind.v2.model.core;
+using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml.FormulaParsing.Utilities;
 using System.Data;
 using System.Data.SqlClient;
 using Tasks.Models;
@@ -24,6 +26,7 @@ namespace Tasks.Controllers
             {
                 Employee employee = new()
                 {
+                    Id = Convert.ToInt32(dt.Rows[i]["Id"]),
                     FirstName = dt.Rows[i]["FirstName"].ToString(),
                     LastName = dt.Rows[i]["LastName"].ToString(),
                     JobRole = dt.Rows[i]["JobRole"].ToString(),
@@ -33,8 +36,25 @@ namespace Tasks.Controllers
             return View(employees);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            if (id > 0)
+            {
+                ViewBag.BT = "Update";
+                SqlConnection con = new(_configuration.GetConnectionString("Con"));
+                SqlCommand cmd = new("select * from Employee where Id ='" + id + "'", con);
+                DataTable dt = new();
+                SqlDataAdapter da = new(cmd);
+                da.Fill(dt);
+                Employee e = new()
+                {
+                    FirstName = dt.Rows[0]["FirstName"].ToString(),
+                    LastName = dt.Rows[0]["LastName"].ToString(),
+                    JobRole = dt.Rows[0]["JobRole"].ToString()
+                };
+                return View(e);
+            }
+            ViewBag.BT = "Save";
             return View();
         }
 
@@ -42,8 +62,29 @@ namespace Tasks.Controllers
         public IActionResult Create(Employee employee)
         {
             SqlConnection con = new(_configuration.GetConnectionString("Con"));
-            SqlCommand cmd = new("Insert into Employee('FirstName','LastName','JobRole') value('" + employee.FirstName + "','" + employee.LastName + "','" + employee.JobRole + "')", con);
+            con.Open();
+            if (employee.Id > 0)
+            {
+                SqlCommand cmd = new("Update Employee set FirstName = '" + employee.FirstName + "', LastName = '" + employee.LastName + "', JobRole = '" + employee.JobRole + "' where Id ='" + employee.Id + "'", con);
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                SqlCommand cmd = new("Insert into Employee values ('" + employee.FirstName + "','" + employee.LastName + "','" + employee.JobRole + "')", con);
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Delete(int id)
+        {
+            SqlConnection con = new(_configuration.GetConnectionString("Con"));
+            con.Open();
+            SqlCommand cmd = new("delete from Employee where Id ='" + id + "'", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return RedirectToAction("Index");
         }
     }
 }

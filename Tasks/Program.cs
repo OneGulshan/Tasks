@@ -1,4 +1,3 @@
-using AutoMapper;
 using Customerproject.Rpository;
 using Microsoft.EntityFrameworkCore;
 using Studentproject.Repository;
