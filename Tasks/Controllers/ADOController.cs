@@ -59,18 +59,7 @@ namespace Tasks.Controllers
         public IActionResult Create(Employee employee)
         {
             SqlConnection con = new(_configuration.GetConnectionString("Con"));
-            con.Open();
-            if (employee.Id > 0)
-            {
-                SqlCommand cmd = new SqlCommand("Update Employee set FirstName = '" + employee.FirstName + "', LastName = '" + employee.LastName + "', JobRole = '" + employee.JobRole + "' where Id ='" + employee.Id + "'", con);
-                cmd.ExecuteNonQuery();
-            }
-            else
-            {
-                SqlCommand cmd = new("Insert into Employee values ('" + employee.FirstName + "','" + employee.LastName + "','" + employee.JobRole + "')", con);
-                cmd.ExecuteNonQuery();
-            }
-            con.Close();
+            SqlCommand cmd = new("Insert into Employee('FirstName','LastName','JobRole') value('" + employee.FirstName + "','" + employee.LastName + "','" + employee.JobRole + "')", con);
             return RedirectToAction(nameof(Index));
         }
 
