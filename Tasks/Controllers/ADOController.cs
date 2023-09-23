@@ -1,9 +1,6 @@
-﻿using com.sun.xml.@internal.bind.v2.model.core;
-using Microsoft.AspNetCore.Mvc;
-using OfficeOpenXml.FormulaParsing.Utilities;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
-using Tasks.Models;
 
 namespace Tasks.Controllers
 {
@@ -65,7 +62,7 @@ namespace Tasks.Controllers
             con.Open();
             if (employee.Id > 0)
             {
-                SqlCommand cmd = new("Update Employee set FirstName = '" + employee.FirstName + "', LastName = '" + employee.LastName + "', JobRole = '" + employee.JobRole + "' where Id ='" + employee.Id + "'", con);
+                SqlCommand cmd = new SqlCommand("Update Employee set FirstName = '" + employee.FirstName + "', LastName = '" + employee.LastName + "', JobRole = '" + employee.JobRole + "' where Id ='" + employee.Id + "'", con);
                 cmd.ExecuteNonQuery();
             }
             else
