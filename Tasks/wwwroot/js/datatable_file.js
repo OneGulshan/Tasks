@@ -11,6 +11,7 @@ function GetQuestion() {
 }
 
 function OnSuccess(response) {
+    debugger;
     $('#dataTable').DataTable({
         bProcessing: true,
         bLengthChange: true,

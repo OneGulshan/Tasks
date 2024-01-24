@@ -20,8 +20,10 @@ namespace Tasks.Controllers
 
         public IActionResult Create(int id)
         {
+            ViewBag.btn = "Create";
             if (id > 0)
             {
+                ViewBag.btn = "Update";
                 var result = _context.Images.Where(x => x.Id == id).FirstOrDefault();
                 return View(result);
             }
@@ -33,36 +35,54 @@ namespace Tasks.Controllers
         {
             if (ModelState.IsValid)
             {
-                string fileName = null;
-                if (img.ImageFile != null)
+                string fe = Path.GetExtension(img.ImageFile.FileName);
+                var fileLength = img.ImageFile.Length;
+                if (fe.ToString().ToLower().Equals(".jpg", StringComparison.CurrentCultureIgnoreCase) || fe.ToString().ToLower().Equals(".jpeg", StringComparison.CurrentCultureIgnoreCase) || fe.ToString().ToLower().Equals(".png", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    string uploadDir = Path.Combine(_environment.WebRootPath, "Images");
-                    fileName = Guid.NewGuid().ToString() + "-" + img.ImageFile.FileName;
-                    string filePath = Path.Combine(uploadDir, fileName);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    if (fileLength <= 2105344)
                     {
-                        img.ImageFile.CopyTo(fileStream);
-                    }
-                    if (img.Id == 0)
-                    {                        
-                        img.ImagePath = fileName;
-                        _context.Images.Add(img);
-                        _context.SaveChanges();
+                        string fileName = null;
+                        if (img.ImageFile != null)
+                        {
+                            string uploadDir = Path.Combine(_environment.WebRootPath, "Images");
+                            fileName = Guid.NewGuid().ToString() + "-" + img.ImageFile.FileName;
+                            string filePath = Path.Combine(uploadDir, fileName);
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                img.ImageFile.CopyTo(fileStream);
+                            }
+                            if (img.Id == 0)
+                            {
+                                img.ImagePath = fileName;
+                                _context.Images.Add(img);
+                                _context.SaveChanges();
+                            }
+                            else
+                            {
+                                var image = _context.Images.Where(x => x.Id == img.Id).FirstOrDefault();
+                                var oldImagePath = Path.Combine(_environment.WebRootPath, "Images", image.ImagePath);
+
+                                if (System.IO.File.Exists(oldImagePath))
+                                {
+                                    System.IO.File.Delete(oldImagePath);
+                                }
+
+                                image.ImagePath = fileName;
+                                _context.Images.Update(image);
+                                _context.SaveChanges();
+                            }
+                        }
                     }
                     else
                     {
-                        var image = _context.Images.Where(x => x.Id == img.Id).FirstOrDefault();                        
-                        var oldImagePath = Path.Combine(_environment.WebRootPath, "Images", image.ImagePath);
-
-                        if (System.IO.File.Exists(oldImagePath))
-                        {
-                            System.IO.File.Delete(oldImagePath);
-                        }
-
-                        image.ImagePath = fileName;
-                        _context.Images.Update(image);
-                        _context.SaveChanges();
+                        TempData["Message"] = "Please upload only less than 2mb size files !!";
+                        return RedirectToAction("Create");
                     }
+                }
+                else
+                {
+                    TempData["Message"] = "Please upload only png,jpg files !!";
+                    return RedirectToAction("Create");
                 }
             }
             return RedirectToAction("Index");
@@ -83,6 +103,6 @@ namespace Tasks.Controllers
             }
 
             return RedirectToAction("Index");
-        }        
+        }
     }
 }

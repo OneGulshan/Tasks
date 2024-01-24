@@ -41,7 +41,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employee", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.EmployeeAddresses", b =>
@@ -68,7 +68,7 @@ namespace Tasks.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("EmployeesAddresses");
+                    b.ToTable("EmployeesAddresses", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Category", b =>
@@ -87,7 +87,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.City", b =>
@@ -106,7 +106,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("City_Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Context", b =>
@@ -125,7 +125,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contexts");
+                    b.ToTable("Contexts", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Country", b =>
@@ -141,7 +141,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Cid");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Csv", b =>
@@ -163,7 +163,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("MemberId");
 
-                    b.ToTable("Csvs");
+                    b.ToTable("Csvs", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Customer", b =>
@@ -203,7 +203,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Std_Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Event", b =>
@@ -228,7 +228,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("EventId");
 
-                    b.ToTable("Events");
+                    b.ToTable("Events", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Image", b =>
@@ -244,7 +244,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Login", b =>
@@ -263,7 +263,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Logins");
+                    b.ToTable("Logins", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Menu", b =>
@@ -279,7 +279,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("MenuId");
 
-                    b.ToTable("Menus");
+                    b.ToTable("Menus", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Question", b =>
@@ -322,7 +322,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("QuestionsId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("Questions", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.State", b =>
@@ -341,7 +341,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Sid");
 
-                    b.ToTable("States");
+                    b.ToTable("States", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.SubCategory", b =>
@@ -363,7 +363,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("SubCategoryId");
 
-                    b.ToTable("SubCategories");
+                    b.ToTable("SubCategories", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.Models.Teacher", b =>
@@ -382,7 +382,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("Tasks.EmployeeAddresses", b =>
