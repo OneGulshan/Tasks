@@ -1,0 +1,14 @@
+----------------------------------------------------------------------------------------------------------
+Get Reference From Azure.txt For Creating Resources and Container
+
+https://youtu.be/NEKFiBUwWcU?si=DhghgVAo-nImezXM <- Learning Path
+
+How to Use Blob Storage in Asp.Net Core?
+Steps: Install package Azure.Storage.blobs.
+- Create a APIController and Blob Model.
+- In APIController Creat Post Method and Configure your Blob Connection string and containerName in this Method and Image Url save in local DB.
+- Copy Connection String From Access keys from Storage Account.
+Steps: Under Storage Account -> Access Keys -> Connection string.
+
+Azure.Storage.Blobs 12.10.0 <- Only Support
+----------------------------------------------------------------------------------------------------------
