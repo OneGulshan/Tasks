@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Login>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.ActionLink("Create", "Create", new { @class = "btn btn-primary" })<br /><br />
+
+<form method="post" action="/Dapper/Create">
+    <h3>Insert</h3>
+    <lable>Id : </lable>
+    <input type="text" name="Id" />
+    <lable>Email : </lable>
+    <input type="text" name="Email" />
+    <lable>Password : </lable>
+    <input type="text" name="Password" />
+    <input type="submit" value="Create" />
+</form>
+
+<form method="post" action="/Dapper/Update">
+    <h3>Update</h3>
+    <lable>Id : </lable>
+    <input type="text" name="Id" />
+    <lable>Email : </lable>
+    <input type="text" name="Email" />
+    <lable>Password : </lable>
+    <input type="text" name="Password" />
+    <input type="submit" value="Update" />
+</form>
+<br />
+
+<table id="tbl" border="1" style="background-color :gray; color:white">
+    <tr style="background-color:maroon">
+        <th style="border:1px solid black;">Id</th>
+        <th style="border:1px solid black;">Email</th>
+        <th style="border:1px solid black;">Password</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="border:1px solid black;">@item.Id</td>
+            <td style="border:1px solid black;">@item.Email</td>
+            <td style="border:1px solid black;">@item.Password</td>
+            <td style="border:1px solid black;">
+                @Html.ActionLink("Edit", "Create", new { id = item.Id }, new { style = "color:purple; font-weight:bold" })&nbsp;
+                @Html.ActionLink("Delete", "Delete", new { id = @item.Id }, new { style = "color:purple; font-weight:bold;" })
+            </td>
+        </tr>
+    }
+</table>

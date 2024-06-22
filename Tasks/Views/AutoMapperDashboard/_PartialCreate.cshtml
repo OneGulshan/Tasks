@@ -1,0 +1,168 @@
+﻿@model Tasks.ViewModal.CustomerVM
+
+<section>
+    @{
+        string actionName;
+        if (Model.Std_Id != 0)
+        {
+            actionName = "Edit";
+        }
+        else
+        {
+            actionName = "Create";
+        }
+    }
+    <form asp-action="@actionName" asp-controller="AutoMapperDashboard" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                @Html.HiddenFor(x => x.Std_Id)
+                <input type="hidden" value="@Model.C_Id" class="hdncId" />
+                <input type="hidden" value="@Model.S_Id" class="hdnsId" />
+                <input type="hidden" value="@Model.City_Id" class="hdncityId" />
+                <input type="hidden" value="@Model.Std_Id" class="hdnStdId" />
+                <div class="modal fade" id="Mstudent" style="background-color: #00000094;">
+                    <div class="modal-dialog modal-lg ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    @{
+                                        if (actionName == "Edit")
+                                        {
+                                            <lavel>Edit Student</lavel>
+                                        }
+                                        else
+                                        {
+                                            <lavel>Add Student</lavel>
+                                        }
+                                    }
+                                </h4>
+                                <button type="button" class="close" data-bs-dismiss="modal">
+                                    <span class="btn btn-danger">x</span>
+                                </button>
+
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label asp-for="Std_Name" class="control-label"></label>
+                                                <input asp-for="Std_Name" class="form-control" />
+                                                <span asp-validation-for="Std_Name" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label asp-for="Std_Class" class="control-label"></label>
+                                                <input asp-for="Std_Class" class="form-control" />
+                                                <span asp-validation-for="Std_Class" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label asp-for="Std_School" class="control-label"></label>
+                                                <input asp-for="Std_School" class="form-control" />
+                                                <span asp-validation-for="Std_School" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label asp-for="Std_Address" class="control-label"></label>
+                                                <input asp-for="Std_Address" class="form-control" />
+                                                <span asp-validation-for="Std_Address" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label asp-for="Std_Mobile" class="control-label"></label>
+                                                <input asp-for="Std_Mobile" class="form-control" />
+                                                <span asp-validation-for="Std_Mobile" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <level>Country</level>
+                                                <select asp-for="C_Id" class="form-control" id="con">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <level>State</level>
+                                                <select asp-for="S_Id" class="form-control" id="sta">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <level>city</level>
+                                                <select asp-for="City_Id" class="form-control" id="city">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label asp-for="Std_Image" class="control-label"></label>
+                                            <input type="file" name="file" class="form-control"
+                                                   onchange="document.getElementById('imageId').src = window.URL.createObjectURL(this.files[0])" />
+                                            @{
+                                                <img src="~/Images/@Model.Std_Image" id="imageId" class="rectengle" width="120" height="80">
+                                            }
+                                            <span asp-validation-for="Std_Image" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                    </div>
+                                </div><br />
+
+                                <div class="form-group">
+                                    @if (Model.Std_Id != 0)
+                                    {
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i>&nbspClose</button>
+                                        <button type="submit" value="Update" class="btn btn-primary"><i class="bi bi-pencil"></i>&nbspUpdate</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i>&nbspClose</button>
+                                        <button type="submit" value="Create" class="btn btn-primary"> <i class="bi bi-plus-circle"></i>&nbspCreate</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </form>
+</section>
+
+<script src="~/js/site.js"></script>

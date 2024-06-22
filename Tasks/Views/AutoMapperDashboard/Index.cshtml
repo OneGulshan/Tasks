@@ -1,0 +1,245 @@
+﻿@model Tasks.ViewModal.CustomerVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div id="PlaceHolderHere"></div>
+<section>
+    <div class="card">
+        <div class="card-header bg-primary " style="display:flex;justify-content:space-between">
+            <h4>Student List</h4>
+            <button class="btn btn-success bi bi-plus-circle" data-target="#Mstudent" data-toggle="ajax-modal"
+                    data-url="@Url.Action("Create")">
+                Create
+            </button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Std_Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Std_Class)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Std_School)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Std_Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Std_Mobile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Std_Image)
+                    </th>
+                    <th>
+                        <level>Country</level>
+                    </th>
+                    <th>
+                        <level>State</level>
+                    </th>
+                    <th>
+                        <City>City</City>
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListCustomer)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Std_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Std_Class)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Std_School)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Std_Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Std_Mobile)
+                        </td>
+                        <td>
+                            @{
+                                <img src="~/Images/@item.Std_Image" class="rectengle" width="120" height="80">
+                            }
+                        </td>
+                        <td>
+                            @{
+                                var country = Model.ListCountry.Where(x => x.Cid == item.C_Id).Select(x => x.CName).FirstOrDefault();
+                                <label>@country</label>
+                            }
+                        </td>
+                        <td>
+                            @{
+                                var state = Model.ListState.Where(x => x.Sid == item.S_Id).Select(x => x.SName).FirstOrDefault();
+                                <level>@state</level>
+                            }
+                        </td>
+                        <td>
+                            @{
+                                var city = Model.ListCity.Where(x => x.City_Id == item.City_Id).Select(x => x.City_Name).FirstOrDefault();
+                                <level>@city</level>
+                            }
+                        </td>
+
+                        <td>
+                            <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+                                    data-url="/AutoMapperDashboard/Edit?id=@item.Std_Id">
+                                Edit
+                            </button>|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Std_Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure to delete')" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+<section>
+
+    <div class="card">
+        <div class="card-header bg-primary" style="display:flex;justify-content:space-between">
+            <h4>Country List</h4>
+            <button class="btn btn-success bi bi-plus-circle" data-target="#Mstudent" data-toggle="ajax-modal"
+                    data-url="AutoMapperDashboard/CreateC">
+                Create
+            </button>
+
+        </div>
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>
+                        <leve>Country</leve>
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.ListCountry)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CName)
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+                                    data-url="/AutoMapperDashboard/EditC?id=@item.Cid">
+                                Edit
+                            </button>
+
+                            @Html.ActionLink("Delete", "DeleteC", "AutoMapperDashboard", new { id = item.Cid }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure to delete')" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<section>
+    <div class="card">
+        <div class="card-header bg-primary" style="display:flex;justify-content:space-between">
+            <h4>State List</h4>
+            <button class="btn btn-success bi bi-plus-circle" data-target="#Mstudent" data-toggle="ajax-modal"
+                    data-url="AutoMapperDashboard/CreateS">
+                Create
+            </button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <leve>Country</leve>
+                    </th>
+                    <th>
+                        <leve>State</leve>
+                    </th>
+
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListState)
+                {
+                    <tr>
+                        <td>
+                            @{
+                                var country = Model.ListCountry.Where(x => x.Cid == item.Cid).Select(x => x.CName).FirstOrDefault();
+                                <label>@country</label>
+                            }
+                        </td>
+                        <td>
+                            <level>@item.SName</level>
+                        </td>
+
+                        <td>
+                            <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+                                    data-url="/AutoMapperDashboard/EditS?id=@item.Sid">
+                                Edit
+                            </button>|
+                            @Html.ActionLink("Delete", "DeleteS", "AutoMapperDashboard", new { id = item.Sid }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure to delete')" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+<section>
+    <div class="card">
+        <div class="card-header bg-primary" style="display:flex;justify-content:space-between">
+            <h4>City List</h4>
+            <button class="btn btn-success bi bi-plus-circle" data-target="#Mstudent" data-toggle="ajax-modal"
+                    data-url="AutoMapperDashboard/CreateCity">
+                Create
+            </button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <leve>State</leve>
+                    </th>
+                    <th>
+                        <leve>City</leve>
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListCity)
+                {
+                    <tr>
+                        <td>
+                            @{
+                                var sta = Model.ListState.Where(x => x.Sid == item.S_Id).Select(x => x.SName).FirstOrDefault();
+                                <label>@sta</label>
+                            }
+                        </td>
+                        <td>
+                            <level>@item.City_Name</level>
+                        </td>
+
+                        <td>
+                            <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+                                    data-url="/AutoMapperDashboard/EditCity?id=@item.City_Id">
+                                Edit
+                            </button>|
+                            @Html.ActionLink("Delete", "DeleteCity", "AutoMapperDashboard", new { id = item.City_Id }, new { @class = "btn btn-danger bi bi-archive", onclick = "return confirm('Are you sure to delete')" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

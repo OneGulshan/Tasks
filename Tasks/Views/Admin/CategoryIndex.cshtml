@@ -1,0 +1,51 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "CategoryIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="PlaceHolderHere"></div>
+<section class="col-md-12">
+    <div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMenu"
+                data-url="@Url.Action("CategoryCreate")">
+            Add Category
+        </button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CategoryName)
+                    </th>
+                    <th>
+                        MenuName
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Categories)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td>
+                            @{
+                                var menuName = Model.Menus.Where(x => x.MenuId == item.MenuId).Select(x => x.MenuName).FirstOrDefault();
+                                <label>@menuName</label>
+                            }
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="ajax-modal"
+                                    data-target="#addMenu" data-url="/Admin/CategoryCreate?id=@item.CategoryId">
+                                Edit
+                            </button> |
+                            @Html.ActionLink("Delete","CategoryDelete",new { id = item.CategoryId },new { @class ="btn btn-primary bi bi-trash3", onclick = "return confirm('Are you sure you wish to delete this article?')"})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

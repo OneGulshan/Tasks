@@ -1,0 +1,54 @@
+﻿@model Tasks.ViewModal.CustomerVM
+@{
+    ViewData["Title"] = "IndexCity";
+}
+
+<div id="PlaceHolderHere"></div>
+<section>
+    <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+            data-url="@Url.Action("CreateCity")">
+        Create
+    </button>
+    <h4>City List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <leve>State</leve>
+                </th>
+                <th>
+                    <leve>City</leve>
+                </th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListCity)
+            {
+                <tr>
+                    <td>
+                        @{
+                            var sta = Model.ListState.Where(x => x.Sid == item.S_Id).Select(x => x.SName).FirstOrDefault();
+                            <label>@sta</label>
+                        }
+                    </td>
+                    <td>
+                        <level>@item.City_Name</level>
+                        @*@Html.DisplayFor(modelItem => item.S_Name)*@
+                    </td>
+
+                    <td>
+                        <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+                                data-url="/AutoMapper/EditCity?id=@item.City_Id">
+                            Edit
+                        </button>|
+                        @*@Html.ActionLink("Edit","Edit",new{id=item.std_Id},new{@class ="btn btn-primary"})|*@
+                        @Html.ActionLink("Delete","DeleteCity",new { id = item.City_Id},new { @class ="btn btn-danger",onclick = "return confirm('Are you sure to delete')"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+

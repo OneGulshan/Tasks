@@ -1,0 +1,54 @@
+﻿@model SubCategory
+
+@{
+    ViewData["Title"] = "SubCategoryIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="PlaceHolderHere"></div>
+<section class="col-md-12">
+    <div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addSubCategory"
+                data-url="@Url.Action("SubCategoryCreate")">
+            Add SubCategory
+        </button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SubCategoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CategoryId)
+                    </th>
+
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model?.SubCategories)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubCategoryName)
+                        </td>
+                        <td>
+                            @{
+                                var menuName = Model.Categories.Where(x => x.CategoryId == item.CategoryId).Select(x => x.CategoryName).FirstOrDefault();
+                                <label>@menuName</label>
+                            }
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="ajax-modal"
+                                    data-target="#addSubCategory" data-url="/Admin/SubCategoryCreate?id=@item.SubCategoryId">
+                                Edit
+                            </button> |
+                            @Html.ActionLink("Delete","SubCategoryDelete",new { id = item.SubCategoryId },new { @class ="btn btn-primary bi bi-trash3",onclick = "return confirm('Are you sure you wish to delete this article?')"})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

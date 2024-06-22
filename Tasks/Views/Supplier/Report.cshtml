@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Tasks.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                Supplier Name<span style="color:red">*</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)<span style="color:red">*</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)/@Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)<span style="color:red">*</span>
+            </th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                Supplier Name<span style="color:red">*</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)<span style="color:red">*</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)/@Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)<span style="color:red">*</span>
+            </th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName) @Html.DisplayFor(modelItem => item.MName) @Html.DisplayFor(modelItem => item.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age, new { @readonly = true })/@Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Create", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.8/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // DataTable
+            var dataTableInsatance = $("#datatable").DataTable();
+            // Setup - add a text input to each footer cell
+            $('#datatable tfoot th').each(function () {
+                var title = $('#datatable tfoot th').eq($(this).text()).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+            // Apply the filter
+            dataTableInsatance.columns().every(function () {
+                var datatableColumn = this;
+
+                $(this.footer()).find('input').on('keyup change', function () {
+                    datatableColumn.search(this.value).draw();
+                });
+            });
+        });
+    </script>
+}

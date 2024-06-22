@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Menu>
+@{    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="PlaceHolderHere"></div>
+
+<button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMenu"
+        data-url="@Url.Action("MenuCreate")">
+    Add Menu
+</button>
+
+<div class="form-group">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MenuName)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MenuName)
+                    </td>
+                    <td class="form-group">
+                        <button type="button" class="btn btn-primary" data-toggle="ajax-modal"
+                            data-target="#addMenu" data-url="/Admin/MenuCreate?id=@item.MenuId">
+                            Edit
+                        </button> |
+
+                        @Html.ActionLink("Delete", "MenuDelete", new { id = item.MenuId },
+                    new
+                    {
+                    @class = "btn btn-primary",
+                    data_url = "/Admin/MenuDelete",
+                    onclick = "return confirm('Are you sure you want to delete?')"
+                    })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

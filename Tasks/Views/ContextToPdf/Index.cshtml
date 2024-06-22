@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Context>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<button id="btnPdf" class="btn btn-primary">Generate PDF</button>&nbsp;&nbsp;&nbsp;
+
+@Html.ActionLink("Create", "Create", new { @class = "btn btn-primary" })
+
+
+<div id="pdfContainer" style="text-align:center;">
+    <h1>Context List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th style="border:1px solid black;">Name</th>
+                <th style="border:1px solid black;">Enrolled</th>
+                <th style="border:1px solid black;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="border:1px solid black;">@item.Name</td>
+                    <td style="border:1px solid black;">@item.Enrolled</td>
+                    <td  style="border:1px solid black;">
+                        @*HTTP Error 404.15 - Not Found Generated Because of Delete button extra string using by @item.Id that solved*@
+                        @Html.ActionLink("Delete", "Delete", new { id = @item.Id })&nbsp;
+                        @Html.ActionLink("Edit", "Create", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $("#btnPdf").click(function () {
+        var sHtml = $("#pdfContainer").html();
+        sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+        window.open('../ContextToPdf/GeneratePdf?html=' + sHtml, '_blank');
+    });
+</script>

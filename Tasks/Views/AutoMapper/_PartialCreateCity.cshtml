@@ -1,0 +1,85 @@
+﻿@model Tasks.ViewModal.CityVm
+<section>
+    @{
+        string actionName;
+        if (Model.City_Id != 0)
+        {
+            actionName = "EditCity";
+        }
+        else
+        {
+            actionName = "CreateCity";
+        }
+    }
+    <form asp-action="@actionName" asp-controller="AutoMapper" method="post">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class=" col-md-8">
+                    @Html.HiddenFor(x => x.City_Id)
+                    <input type="hidden" value="@Model.C_Id" class="hdncId" />
+                    <input type="hidden" value="@Model.S_Id" class="hdnsId" />
+                    <div class="modal fade" id="Mstudent" style="background-color: #00000094;">
+                        <div class="modal-dialog modal-lg ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">
+                                        @{
+                                            if (actionName == "EditCity")
+                                            {
+                                                <lavel>Edit City</lavel>
+                                            }
+                                            else
+                                            {
+                                                <lavel>Add City</lavel>
+                                            }
+                                        }
+                                    </h4>
+                                    <button type="button" class="close" data-bs-dismiss="modal">
+                                        <span class="btn btn-danger">x</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <level>Country</level>
+                                            <select asp-for="C_Id" class="form-control" id="con">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <level>State</level>
+                                            <select asp-for="S_Id" class="form-control" id="sta">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <level>City</level>
+                                        <input asp-for="City_Name" class="form-control" />
+                                        <span asp-validation-for="City_Name" class="text-danger"></span>
+                                    </div><br />
+
+                                    <div class="form-group">
+                                        @if (Model.S_Id != 0)
+                                        {
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i>&nbspClose</button>
+                                            <button type="submit" value="Update" class="btn btn-primary"><i class="bi bi-pencil"></i>&nbspUpdate</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i>&nbspClose</button>
+                                            <button type="submit" value="Create" class="btn btn-primary" asp-controller="AutoMapper" asp-action="CreateCity"> <i class="bi bi-plus-circle"></i>&nbspCreate</button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<script src="~/js/site.js"></script>

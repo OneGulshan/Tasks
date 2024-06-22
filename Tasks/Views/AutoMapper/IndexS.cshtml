@@ -1,0 +1,52 @@
+﻿@model Tasks.ViewModal.CustomerVM
+@{
+    ViewData["Title"] = "IndexS";
+}
+
+<div id="PlaceHolderHere"></div>
+<section>
+    <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+            data-url="@Url.Action("CreateS")">
+        Create
+    </button>
+    <h4>State List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <leve>Country</leve>
+                </th>
+                <th>
+                    <leve>State</leve>
+                </th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListState)
+            {
+                <tr>
+                    <td>
+                        @{
+                            var country = Model.ListCountry.Where(x => x.Cid == item.Cid).Select(x => x.CName).FirstOrDefault();
+                            <label>@country</label>
+                        }
+                    </td>
+                    <td>
+                        <level>@item.SName</level>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-primary" data-target="#Mstudent" data-toggle="ajax-modal"
+                                data-url="/AutoMappers/EditS?id=@item.Sid">
+                            Edit
+                        </button>|
+                        @Html.ActionLink("Delete", "DeleteS", new { id = item.Sid }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure to delete')" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
