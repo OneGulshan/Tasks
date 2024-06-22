@@ -206,28 +206,6 @@ namespace Tasks.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Tasks.Models.Employee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Country")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("State")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Employee");
-                });
-
             modelBuilder.Entity("Tasks.Models.Event", b =>
                 {
                     b.Property<int>("EventId")
@@ -273,14 +251,9 @@ namespace Tasks.Migrations
                     b.Property<int>("Percentage")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupplierId")
-                        .HasColumnType("int");
-
                     b.HasKey("ExperienceId");
 
                     b.HasIndex("Id");
-
-                    b.HasIndex("SupplierId");
 
                     b.ToTable("Experiences");
                 });
@@ -495,17 +468,13 @@ namespace Tasks.Migrations
 
             modelBuilder.Entity("Tasks.Models.Experience", b =>
                 {
-                    b.HasOne("Tasks.Models.Employee", "Employee")
-                        .WithMany()
+                    b.HasOne("Tasks.Models.Supplier", "Supplier")
+                        .WithMany("Experiences")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Tasks.Models.Supplier", null)
-                        .WithMany("Experiences")
-                        .HasForeignKey("SupplierId");
-
-                    b.Navigation("Employee");
+                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("Tasks.Employee", b =>

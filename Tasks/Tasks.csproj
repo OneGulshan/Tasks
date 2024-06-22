@@ -24,4 +24,8 @@
 		<PackageReference Include="IKVM" Version="8.8.1" />
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
+	</ItemGroup>
 </Project>

@@ -12,15 +12,15 @@ using Tasks.Data;
 namespace Tasks.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230723132254_VrggrlTask")]
-    partial class VrggrlTask
+    [Migration("20240622103405_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -44,7 +44,7 @@ namespace Tasks.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Tasks.EmployeeAddresses", b =>
@@ -91,6 +91,25 @@ namespace Tasks.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Tasks.Models.City", b =>
+                {
+                    b.Property<int>("City_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("City_Id"));
+
+                    b.Property<string>("City_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("S_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("City_Id");
+
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("Tasks.Models.Context", b =>
@@ -150,6 +169,46 @@ namespace Tasks.Migrations
                     b.ToTable("Csvs");
                 });
 
+            modelBuilder.Entity("Tasks.Models.Customer", b =>
+                {
+                    b.Property<int>("Std_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Std_Id"));
+
+                    b.Property<int>("C_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("City_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("S_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Std_Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Class")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Mobile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_School")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Std_Id");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("Tasks.Models.Event", b =>
                 {
                     b.Property<int>("EventId")
@@ -173,6 +232,33 @@ namespace Tasks.Migrations
                     b.HasKey("EventId");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("Tasks.Models.Experience", b =>
+                {
+                    b.Property<int>("ExperienceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExperienceId"));
+
+                    b.Property<string>("Degree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PassingYear")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Percentage")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExperienceId");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("Experiences");
                 });
 
             modelBuilder.Entity("Tasks.Models.Image", b =>
@@ -310,6 +396,49 @@ namespace Tasks.Migrations
                     b.ToTable("SubCategories");
                 });
 
+            modelBuilder.Entity("Tasks.Models.Supplier", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ContactNo")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Suppliers");
+                });
+
             modelBuilder.Entity("Tasks.Models.Teacher", b =>
                 {
                     b.Property<int>("Id")
@@ -340,9 +469,25 @@ namespace Tasks.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("Tasks.Models.Experience", b =>
+                {
+                    b.HasOne("Tasks.Models.Supplier", "Supplier")
+                        .WithMany("Experiences")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+                });
+
             modelBuilder.Entity("Tasks.Employee", b =>
                 {
                     b.Navigation("EmployeeAddresses");
+                });
+
+            modelBuilder.Entity("Tasks.Models.Supplier", b =>
+                {
+                    b.Navigation("Experiences");
                 });
 #pragma warning restore 612, 618
         }
