@@ -1,0 +1,44 @@
+﻿@*//This is my route*@
+@page "/employee/create"
+@model Tasks.EmployeeCreate
+
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6 offset-md-3">
+            <form method="post">
+                <legend>Add a Employee</legend>@*legend tag for displaying form headings*@
+                <div class="mb-3">
+                    <label for="FirstName" class="form-label">First Name</label>
+                    <input type="text" asp-for="NewEmployee.FirstName" class="form-control" id="txtfirstname" placeholder="First Name">
+                </div>
+                <div class="mb-3">
+                    <label for="LastName" class="form-label">Last Name</label>
+                    <input type="text" asp-for="NewEmployee.LastName" class="form-control" id="txtlastname" placeholder="Last Name">
+                </div>
+                <div class="mb-3">
+                    <label for="JobRole" class="form-label">Job Role</label>
+                    <input type="text" asp-for="NewEmployee.JobRole" class="form-control" id="txtjobrole" placeholder="Job Role">
+                </div>
+                @for (int i = 0; i <= 1; i++)
+                {
+                    <div class="row">
+                        <legend>Address @(i + 1)</legend>
+                        <div class="mb-3">
+                            <label for='@($"txtAddressType{i}")'>Address Type</label>@*Here make it dynamic fields for adding database values*@
+                            <input type="text" asp-for="NewEmployee.EmployeeAddresses[i].AddressType" class="form-control" class="form-control" id='@($"txtAddressType{i}")'>
+                        </div>
+                        <div class="mb-3">
+                            <label for='@($"txtCity{i}")'>City</label>
+                            <input type="text" asp-for="NewEmployee.EmployeeAddresses[i].City" class="form-control" id='@($"txtCity{i}")'>
+                        </div>
+                        <div class="mb-3">
+                            <label for='@($"txtCountry{i}")'>Country</label>
+                             <input type="text" asp-for="NewEmployee.EmployeeAddresses[i].Country" class="form-control" id='@($"txtCountry{i}")'>
+                        </div>
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

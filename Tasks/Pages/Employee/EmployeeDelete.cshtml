@@ -1,0 +1,31 @@
+@page "/employee/delete"
+@model Tasks.EmployeeDelete
+
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.EmployeeData.FirstName @Model.EmployeeData.LastName</h5>
+                    <h6 class="card-title">Job Role - @Model.EmployeeData.JobRole</h6>
+                    @foreach (var address in Model.EmployeeData.EmployeeAddresses)
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                @address.AddressType Address
+                            </div>
+                            <div class="card-body">
+                                City - @address.City | Country - @address.Country
+                            </div>
+                        </div>
+                    }                    
+                    <div class="card-body">
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
