@@ -1,0 +1,188 @@
+﻿Topics:-
+---------
+1. ADO Crud
+2. Cascading In Admin
+3. Automapper Crud
+4. Cascade DropDown Crud
+5. Context to Pdf with Crud
+6. Csv File Upload
+7. Dapper Crud
+8. Linq in Employee
+9. Event Calendar with Crud
+10. Html to Pdf with Crud
+11. Image Crud
+12. Language Translator Home
+13. Dapper Crud
+14. MongoDB Crud
+
+Note:- [.. _context.Menus] and _context.Menus.AsNoTracking().ToList(); <- is the same it's a collection expression/use expression body for method.
+
+AsNoTracking <- AsNoTracking() Method used to Improving Performace in App. EF tracks the changes
+by default. This tracking entities comes with some overhead, when you retriving data read only
+purpose, such as displaying it in a list or report. Also use when retriving large amount data,
+such as when exporting data to a file then we used this method in our project.
+Ex. var data = _context.Questions.AsNoTracking().ToList();
+
+what is the benefit of using expression body in C#?
+The expression-bodied syntax can be used when a member's body consists only of one expression.
+It uses the =>(fat arrow) operator to define the body of the method or property and allows getting
+rid(छुटकारा दिलाना) of curly braces and the return keyword.
+ex. public void CityDelete(City city) => _dataContext.Cities.Remove(city); <- alternative of:-
+public void CityDelete(City city)
+{
+    _dataContext.Cities.Remove(city);
+}
+
+Why do we use private readonly in C#?
+If it's private and readonly , the benefit is that you can't inadvertently change it from another
+part of that class after it is initialized. The readonly modifier ensures the field can only be
+given a value during its initialization or in its class constructor.
+
+------------------------------------------------------------------------------------------
+
+
+Question Task
+---------------
+- Create 2 Radio Buttons of Names Yes and No, Create 3 Quesions with input fields, Show Boths
+on Yes radio button Check and hide on No radio button Check, with Crud Operation.
+- Same as create 2 checkboxes Car and Bike with 2-2 Quetions with input fields with Crud.
+
+FileHandling Task
+------------------
+- Using FileStream's FileMode.Create enum's constant, using CopyTo method, we can copy our File
+in Targeted Stream(Directry).
+- HttpPostedFileBase has been removed from asp.net core and introduce a new interface
+IFormFile for uploading Files in Asp.Net Core 2.0 and 3.0, IFormFile can receive any type of
+files.
+- When We Scaffolding with DataContext its means we work with DataContext on this View Simple.
+- enctype="multipart/form-data" <- for indicate in our form using a file upload control.
+- name prop of html input for sending data to db.
+- ContentLength Prop Return data in bytes because its a long property simple.
+- File.Exists Method Check the Specified file.
+- File Delete and Update based on file name
+
+If the machine you want to pull from is accessible via ssh, you can add the repository on it
+as a remote via ssh, and then pull from it like you would any remote:
+
+$ git remote add repo_b username@host:path/to/repository.git
+$ git pull repo_b master
+(You can skip the step of adding a remote and just specify the full URL in the git pull
+command instead of a remote name, but if you're going to be pulling from the repository on a
+regular basis, adding it as a remote will save you lots of typing.)
+
+Events Scheduler calendar Task
+--------------------------------
+- Displaying Events 1st Task
+- Open Db tbl and Double Click on arrow for full filling tbl tuple
+- @await RenderSectionAsync("Scripts", required: false) <- This Render Section allow us to create placeholder,
+and then render content here using this placeholder from any child view
+- Copy element means copying the html element with content
+- The integrity attribute of JS Script allows a browser to check the fetched script to ensure that the code is never loaded if the source
+has been manipulated. means for authorization our script file on browser when we matching js file by browser simple
+- &times; <- this is a unicode character in C# and &times; is for X(close) simble
+
+Csv file
+---------
+- csv file data add in db
+- steps :- install CsvHelper package, create csv file, create csv model with Index(0), controller code with view
+- ModelSnapshots after migration is for changing in db, identity remove from ModelSnapshots if csv file primary key conflict
+- [Obsolete] -> Obsolete inventory refers to a product that has reached the end of its lifecycle
+
+--------------------------------
+
+Session Storage & Local Storage in JS
+Multiple selection using JS
+BoomGuse for JS
+Blackbox in Vs Code
+Injection Molding is a Die Machine, Urea
+Mapper for Mapping Class Prop with Vm prop's
+
+
+public void Clear() //For Clearing DB Table Data
+{
+    var rows = from d in _context.Events
+               select d;
+    foreach (var row in rows)
+    {
+        _context.Events.Remove(row);
+    }
+    _context.SaveChanges();
+}
+
+public IActionResult Index()
+{
+    Clear();
+    return View();
+}
+
+--------------------------------
+Razor Page Tutorial
+--------------------
+
+https://youtube.com/playlist?list=PL18HZjtdIA4Al-wYHC-i2TA-lgXLvHVmB&si=OdMSnLMtPuM8PKPt
+https://youtube.com/playlist?list=PL18HZjtdIA4C4D37Oriyt8S9Irg4CVzJh&si=ZzWSQ11svx6lfbXf OR <- Learning Paths
+
+https://www.youtube.com/watch?v=z8RSNJtM2Rw <- Razor Page Crud learning link
+- Razor Pages Default Dirctory set in Program.cs file in asp.net core web application.
+- I Learned Razor Pages Crud From this URL Other Bootstrap Them etc from technology keeda Category Crud in Razor Page not Available Here.
+
+Note:- Razor Pages available in Pages Folder.
+
+132.Getting Started With Razor pages | Part-1
+- Create a Razor Project Only. using Asp.Net Core Web App Template.
+
+133.Create Model, Connection String , Register Connection String, Data Context in Razor Pages| Part-2
+- Install Packages also, add-migration and update-database
+
+134.Get List Of Categories in Razor Pages| CRUD Operations | Part-3
+- Create Categories Folder in Pages Folder and Index Partial Page in Categories Folder
+- Create OnGet Category Method and Post also in this video
+- Then Insert some records in Category and Simply View
+- Then Create create Partial View for Creating category with cs code.
+
+135.Post New Category in Razor Pages| Server Side Validation | Client Side Validation| Part-4
+- Already Done. All Razor Pages Crud Operation.
+
+136.Install BootsWatch Theme | Icons | ASP.NET CORE RAZOR Pages | Part-5
+- Search Bootswatch.com and download its css file. now add new css style file is css folder and add css code in it and simply replace link bootstrap.css by this file in Layout.
+
+137.Temp Data , Toast Alert in Razor Pages Hindi | Razor Pages ASP.NET CORE Tutorial Part-7
+- Now add All this.
+- Search for toaster js and paste css cdn in layout. and js in index and layout jquery.min.js also in index.
+
+138.Partial view in Razor Pages Hindi | Razor Pages ASP.NET CORE Tutorial Part-8
+- Add _alertMessage razor View in Shared and paste all EmployeeIndex Toast Alert code in it and call that on Layout page.
+
+--------------------------------
+C:\Common Library\Tasks-master
+install nuget package Select.HtmlToPdf.NetCore for Context and Html to Pdf Conversion.
+
+https://www.youtube.com/watch?v=JhaQq7tbbKU <- CSV learning link
+for working with repositories, use clone facility simply using commits
+
+jQuery DataTable using offline(on Question Controller)
+-------------------------------------------------------
+- https://datatables.net/download/ -> Download -> Download files -> extract file -> move in js folder -> copy jquery-dataTables & min file -> create DataTable folder in root and past in it.
+- In js folder create a datatable_file.js file and link this file in Index View in @section scripts.
+- Now link dataTables.js then dataTables.min.js file in Layout & dataTables.css & dataTables.min.css also.
+- Now in datatable_file.js write Bind DataTable code on Index.
+Note:- Large Amount data can't be handeled by DataTable but we can handle small amount of data using by Take(50) method. For Solving this we maked a seprate method and return data in Json Format,
+then remove IEnumerable and display using datatable_file.js file in Table.
+- undefine (reading 'style')  error showed on console when view page code missing when passing code from jQuery like QuestionsId etc.
+
+MongoDBCrud using Student Controller
+-------------------------------------
+//https://www.youtube.com/watch?v=dsvL22_w88I&ab_channel=ThumbIKR-Shorts <- MongoDB Crud Learing Path
+- using jquery.min.js file in lib -> dist folder.
+
+Core MVC CascadeDropdownList
+-----------------------------
+
+Learn Linq in Employee Controller
+----------------------------------
+https://youtu.be/hPZ6yK8Dduw <- Learned by this
+
+Learn Globalization and localization in ASP.NET Core(For Diff types of Language Converter site Supporting)
+----------------------------------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=fEBJMl5wbQY&t=644s&ab_channel=ASP.NETMVC <- Learned by this
+----------------------------------------------------------------------------------------------------------
