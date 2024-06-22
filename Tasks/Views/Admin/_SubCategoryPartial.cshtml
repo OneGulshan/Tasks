@@ -4,8 +4,8 @@
     <form asp-action="SubCategoryCreate" asp-controller="Admin" method="post">
         <div class="form-group">
             @Html.HiddenFor(x =>x.SubCategoryId)
-            <input type="hidden" value="@Model.MenuId" class="MenuId" />
-            <input type="hidden" value="@Model.CategoryId" class="CategoryId" />
+            <input type="hidden" value="@Model.MenuId" class="hdnMenuId" />
+            <input type="hidden" value="@Model.CategoryId" class="hdnCatId" />
             <div class="modal fade" id="addSubCategory">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -26,7 +26,7 @@
 
                             <div class="mb-3">
                                 <level>Categoray Name</level>
-                                <select asp-for="CategoryId" class="form-control" id="subid">
+                                <select asp-for="CategoryId" class="form-control" id="category">
                                 </select>
                             </div>
 

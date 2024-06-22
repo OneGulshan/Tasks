@@ -92,6 +92,9 @@ namespace Tasks.Controllers
             else
             {
                 return PartialView("_CategoryPartial", new Category());
+
+                //Category cate = new Category();
+                //return PartialView("_CategoryPartial", cate);
             }
         }
 

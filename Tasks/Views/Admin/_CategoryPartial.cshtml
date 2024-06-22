@@ -4,7 +4,7 @@
     <form asp-action="CategoryCreate" asp-controller="Admin" method="post">
         <div class="form-group">
             @Html.HiddenFor(x => x.CategoryId)
-            <input type="hidden" value="@Model.MenuId" class="MenuId" />
+            <input type="hidden" value="@Model.MenuId" class="hdnMenuId" />
             <div class="modal fade" id="addMenu">
                 <div class="modal-dialog">
                     <div class="modal-content">
