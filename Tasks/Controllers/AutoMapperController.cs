@@ -18,7 +18,7 @@ namespace Tasks.Controllers
         {
             CustomerVM vm = new();
             var con = _country.CGetall();
-            vm.ListCountry = _mapper.Map<List<CountryVM>>(con);
+            vm.ListCountry = _mapper.Map<List<CountryVm>>(con);
             var sta = _dataContext.States.AsNoTracking().ToList();
             vm.ListState = _mapper.Map<List<StateVm>>(sta);
             var city = _dataContext.Cities.AsNoTracking().ToList();
@@ -26,7 +26,7 @@ namespace Tasks.Controllers
             return View(vm);
         }
 
-        public IActionResult CreateC() => PartialView("_PartialCcreate", new CountryVM());
+        public IActionResult CreateC() => PartialView("_PartialCcreate", new CountryVm());
 
         [HttpPost]
         public IActionResult CreateC(Country country)
@@ -48,7 +48,7 @@ namespace Tasks.Controllers
             var data = _country.CGet(id);
             if (data != null)
             {
-                return View("_PartialCcreate", new CountryVM()
+                return View("_PartialCcreate", new CountryVm()
                 {
                     CName = data.CName,
                     Cid = data.Cid

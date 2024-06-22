@@ -1,6 +1,6 @@
-﻿//$('#PlaceHolderHere').on('hidden.bs.modal', function () {
-//    location.reload();
-//})
+﻿$('#PlaceHolderHere').on('hidden.bs.modal', function () {
+    location.reload();
+})
 
 $(function () {
     var PlaceHolderElement = $('#PlaceHolderHere');
@@ -138,7 +138,7 @@ function Getcity(sid, cid) {
 }
 
 /*------------------Refreshpage--------------------------------------------*/
-function refreshPage() {
-    window.location.reload();
-}
+//function refreshPage() {
+//    window.location.reload();
+//}
 

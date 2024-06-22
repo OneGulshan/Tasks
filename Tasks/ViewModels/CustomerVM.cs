@@ -21,7 +21,7 @@ namespace Tasks.ViewModal
         public int S_Id { get; set; }
         public int City_Id { get; set; }
         public List<CustomerVM> ListCustomer { get; set; }
-        public List<CountryVM> ListCountry { get; set; }
+        public List<CountryVm> ListCountry { get; set; }
         public List<StateVm> ListState { get; set; }
         public List<CityVm> ListCity { get; set; }
     }

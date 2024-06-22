@@ -21,7 +21,7 @@ namespace Tasks.Controllers
             var data = _repository.Getall();
             VModel.ListCustomer = _mapper.Map<List<CustomerVM>>(data);
             var con = _dataContext.Countries.AsNoTracking().ToList();
-            VModel.ListCountry = _mapper.Map<List<CountryVM>>(con);
+            VModel.ListCountry = _mapper.Map<List<CountryVm>>(con);
             var sta = _dataContext.States.AsNoTracking().ToList();
             VModel.ListState = _mapper.Map<List<StateVm>>(sta);
             var city = _dataContext.Cities.AsNoTracking().ToList();
@@ -134,7 +134,7 @@ namespace Tasks.Controllers
 
         public JsonResult City(int id) => new(_dataContext.Cities.Where(x => x.S_Id == id).AsNoTracking().ToList());
 
-        public IActionResult CreateC() => PartialView("_PartialCcreate", new CountryVM());
+        public IActionResult CreateC() => PartialView("_PartialCcreate", new CountryVm());
 
         [HttpPost]
         public IActionResult CreateC(Country country)
@@ -156,7 +156,7 @@ namespace Tasks.Controllers
             var data = _country.CGet(id);
             if (data != null)
             {
-                return PartialView("_PartialCcreate", new CountryVM()
+                return PartialView("_PartialCcreate", new CountryVm()
                 {
                     CName = data.CName,
                     Cid = data.Cid

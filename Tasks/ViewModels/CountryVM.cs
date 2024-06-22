@@ -1,6 +1,6 @@
 ﻿namespace Tasks.ViewModal
 {
-    public class CountryVM
+    public class CountryVm
     {
         public int Cid { get; set; }
         public string CName { get; set; } = "";
