@@ -9,10 +9,10 @@ $(function () {
         var url = $(this).data('url');
         $.get(url).done(function (data) {
             PlaceHolderElement.html(data);
-            //    var menuId = PlaceHolderElement.find('.MenuId').val();
-            //    var cat_id = PlaceHolderElement.find('.CategoryId').val();
-            //    GetMenu(menuId);
-            //    GetCategory(menuId, cat_id);
+            var menuId = PlaceHolderElement.find('.MenuId').val();
+            var cat_id = PlaceHolderElement.find('.CategoryId').val();
+            GetMenu(menuId);
+            GetCategory(menuId);
 
             $('#con').empty();
             $('#sta').empty();
@@ -42,6 +42,25 @@ $(document).ready(function () {
 
 })
 
+function GetCategory(menuId) {
+    debugger;
+    $.ajax({
+        url: "../Admin/CategoryIndex",
+        success: function (result) {
+            $('#menu').empty();
+            $('#menu').append('<option value=' + 0 + ' >' + '--------Select Category-------' + '</option >');
+            $.each(result, function (i, data) {
+                if (menuId == data.menuId) {
+                    $('#menu').append('<option value=' + data.menuId + ' selected >' + data.menuName + '</option >');
+                }
+                else {
+                    $('#menu').append('<option value=' + data.menuId + '>' + data.menuName + '</option >');
+                }
+
+            });
+        }
+    });
+}
 function GetCountry(cid) {
 
     $.ajax({

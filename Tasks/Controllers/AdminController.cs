@@ -91,6 +91,18 @@ namespace Tasks.Controllers
             }
             else
             {
+                ViewBag.Main_Manu = new SelectList(_context.Menus, "MenuId", "MenuName");
+                foreach (var item in ViewBag.Main_Manu)
+                {
+                    Category category = new()
+                    {
+                        MenuId = Convert.ToInt32(item.Value),
+                        MenuName = item.Text
+                    };
+
+                    return PartialView("_CategoryPartial", category);
+                }
+                
                 return PartialView("_CategoryPartial", new Category());
             }
         }

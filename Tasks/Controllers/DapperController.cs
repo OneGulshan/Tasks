@@ -7,11 +7,11 @@ namespace Tasks.Controllers
 {
     public class DapperController : Controller
     {
-        private readonly string Connection = "Data Source=DESKTOP-BTE5UP2;Initial Catalog=TasksDB;Integrated Security=true;MultipleActiveResultSets=True;TrustServerCertificate=True";
+        private readonly string Connection = "Data Source=DESKTOP-NCCJ25F;Initial Catalog=TasksDB;Integrated Security=true;MultipleActiveResultSets=True;TrustServerCertificate=True";
         public IActionResult Index()
         {
             using SqlConnection connection = new(Connection);
-            var logins = connection.Query<Login>("SELECT * FROM Login");
+            var logins = connection.Query<Login>("SELECT * FROM Logins");
             return View(logins);
         }
 
@@ -47,12 +47,12 @@ namespace Tasks.Controllers
                 temp = connection.Query<Login>("LoginProcedure", Params, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
                 if (temp == null)
                 {
-                    string myCommond = "Insert into Login values('" + m.Id + "','" + m.Email + "', '" + m.Password + "');";
+                    string myCommond = "Insert into Logins values('" + m.Email + "', '" + m.Password + "');";
                     connection.Execute(myCommond);
                 }
                 else
                 {
-                    string myCommond = "Update Login set email='" + m.Email + "', password='" + m.Password + "' where id='" + m.Id + "';";
+                    string myCommond = "Update Logins set email='" + m.Email + "', password='" + m.Password + "' where id='" + m.Id + "';";
                     connection.Execute(myCommond);
                 }
             }
@@ -63,7 +63,7 @@ namespace Tasks.Controllers
         {
             using (SqlConnection connection = new(Connection))
             {
-                string myCommond = "Update Login set email='" + m.Email + "', password='" + m.Password + "' where id='" + m.Id + "';";
+                string myCommond = "Update Logins set email='" + m.Email + "', password='" + m.Password + "' where id='" + m.Id + "';";
                 connection.Execute(myCommond);
             }
             return RedirectToAction(nameof(Index));

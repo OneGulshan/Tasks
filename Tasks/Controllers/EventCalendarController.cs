@@ -32,6 +32,7 @@ namespace Tasks.Controllers
                     v.Description = e.Description;
                     v.ThemeColor = e.ThemeColor;
                 }
+                _context.Events.Update(v);
             }
             else
             {
