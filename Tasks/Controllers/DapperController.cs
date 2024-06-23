@@ -1,5 +1,5 @@
-﻿using Tasks.Models;
-using Dapper;
+﻿using Dapper;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 

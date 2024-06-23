@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using DataAccessLayer.Models;
+using DataAccessLayer.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tasks.Data;
 using Tasks.IRepository;
-using Tasks.Models;
-using Tasks.ViewModal;
 
 namespace Tasks.Controllers
 {

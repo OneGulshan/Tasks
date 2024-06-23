@@ -1,4 +1,4 @@
-﻿using Tasks.Models;
+﻿using DataAccessLayer.Models;
 
 namespace Tasks.Repository
 {

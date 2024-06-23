@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tasks.Data;
-using Tasks.Models;
+using DataAccessLayer.Models;
 
 namespace Tasks.Controllers
 {

@@ -1,6 +1,6 @@
 ﻿using Tasks.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Tasks.Models;
+using DataAccessLayer.Models;
 
 namespace Tasks.Controllers
 {

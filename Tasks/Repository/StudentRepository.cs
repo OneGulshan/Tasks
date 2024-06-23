@@ -1,5 +1,5 @@
 ﻿using MongoDB.Driver;
-using Tasks.Models;
+using DataAccessLayer.Models;
 
 namespace Tasks.Repository
 {

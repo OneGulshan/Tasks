@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Tasks.Data;
-using Tasks.Models;
-using Tasks.ViewModels;
+using DataAccessLayer.Models;
+using DataAccessLayer.ViewModels;
 
 namespace Tasks.Controllers
 {

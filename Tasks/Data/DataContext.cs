@@ -1,6 +1,6 @@
-﻿using Tasks.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using DataAccessLayer.Models;
 
 namespace Tasks.Data
 {

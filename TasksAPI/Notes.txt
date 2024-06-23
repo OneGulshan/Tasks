@@ -9,6 +9,11 @@ Steps: Install package Azure.Storage.blobs.
 - In APIController Creat Post Method and Configure your Blob Connection string and containerName in this Method and Image Url save in local DB.
 - Copy Connection String From Access keys from Storage Account.
 Steps: Under Storage Account -> Access Keys -> Connection string.
-
-Azure.Storage.Blobs 12.10.0 <- Only Support
 ----------------------------------------------------------------------------------------------------------
+
+23/06/2024
+-----------
+API Implemented in APIController
+5171 Api ke saath wala Url chala 7092 in launchSettings defined.
+
+

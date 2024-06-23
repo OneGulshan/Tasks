@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Tasks.Data;
 using System.Diagnostics;
-using Tasks.Models;
+using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Tasks.Controllers

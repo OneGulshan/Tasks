@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Tasks.Data;
-using Tasks.Models;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
+using DataAccessLayer.Models;
 
 namespace Tasks.Controllers
 {

@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using TasksAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddHttpClient();
 builder.Services.AddControllers();
 builder.Services.AddMvc().AddXmlSerializerFormatters();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -13,9 +14,10 @@ builder.Services.AddDbContext<TasksAPI.Data.DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Con"));
 });
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecomm", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TasksAPI", Version = "v1" });
 });
 
 builder.Services.AddCors(o =>
@@ -36,9 +38,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
