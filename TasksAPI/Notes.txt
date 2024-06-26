@@ -10,10 +10,10 @@ Steps: Install package Azure.Storage.blobs.
 - Copy Connection String From Access keys from Storage Account.
 Steps: Under Storage Account -> Access Keys -> Connection string.
 ----------------------------------------------------------------------------------------------------------
-
 23/06/2024
 -----------
-API Implemented in APIController
+Asp.Net Core Web API Implemented in APIController.(Deleted Asp.Net Core WebApi project and add in Tasks Project)
 5171 Api ke saath wala Url chala 7092 in launchSettings defined.
+----------------------------------------------------------------------------------------------------------
 
 
