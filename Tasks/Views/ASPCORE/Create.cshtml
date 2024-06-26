@@ -6,14 +6,16 @@
 
 <h1>Create</h1>
 
-<h4>Employee</h4>
+<h4>Image</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="Create">
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                @Html.HiddenFor(m => m.Id)
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImageFile" required />
+                <img src="~/Images/@Model.ImagePath" height="65" width="80" />
             </div>
             <div class="form-group">
                 <label asp-for="Country" class="control-label"></label>
@@ -28,7 +30,7 @@
                 </select>
             </div><br />
             <div class="form-group">
-                <input type="submit" value="@ViewBag.BT" class="btn btn-primary" />
+                <input type="submit" value="@ViewBag.btn" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -38,16 +40,33 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        if (TempData["Message"] != null)
+        {
+            <script>
+                alert('@Html.Raw(TempData["Message"])')
+            </script>
+        }
+    }
+}
+ *@
+
 @section Scripts {
     <script>
+        // if (TempData["Message"] != null) {
+        //     alert('@Html.Raw(TempData["Message"])')
+        // }
+
         $(document).ready(function () {
             $("#Country").on("change", function () {
                 $('#States').empty();
-                $('#States').append('<option value=' + 0 + ' >' + ' --Select States-- ' + '</option >');
+                $('#States').append('<option value = ' + 0 + '>' + ' --Select States-- ' + '</option>');
 
                 $.ajax({
                     type: "Post",
-                    url: "/CascadeDropDownList/GetStates",
+                    url: "/ASPCORE/GetStates",
                     data: { "CId": $('#Country :selected').val() },
                     success: function (response) {
                         var items = '';
@@ -69,4 +88,3 @@
 
     </script>
 }
-

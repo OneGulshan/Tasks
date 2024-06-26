@@ -7,7 +7,6 @@ namespace Tasks.Data
     public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
     {
         public DbSet<Question> Questions { get; set; }
-        public DbSet<Image> Images { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Csv> Csvs { get; set; }
         public DbSet<Employee> Employees { get; set; }

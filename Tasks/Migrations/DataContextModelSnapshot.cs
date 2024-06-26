@@ -22,6 +22,393 @@ namespace Tasks.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DataAccessLayer.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.City", b =>
+                {
+                    b.Property<int>("City_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("City_Id"));
+
+                    b.Property<string>("City_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("S_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("City_Id");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Context", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Enrolled")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contexts");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Country", b =>
+                {
+                    b.Property<int>("Cid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cid"));
+
+                    b.Property<string>("CName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Cid");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Csv", b =>
+                {
+                    b.Property<int>("MemberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberId"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EndDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MemberId");
+
+                    b.ToTable("Csvs");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Customer", b =>
+                {
+                    b.Property<int>("Std_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Std_Id"));
+
+                    b.Property<int>("C_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("City_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("S_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Std_Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Class")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Mobile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Std_School")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Std_Id");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Event", b =>
+                {
+                    b.Property<int>("EventId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ThemeColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EventId");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Experience", b =>
+                {
+                    b.Property<int>("ExperienceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExperienceId"));
+
+                    b.Property<string>("Degree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PassingYear")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Percentage")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExperienceId");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("Experiences");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Login", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logins");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Menu", b =>
+                {
+                    b.Property<int>("MenuId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MenuId"));
+
+                    b.Property<string>("MenuName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MenuId");
+
+                    b.ToTable("Menus");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Question", b =>
+                {
+                    b.Property<int>("QuestionsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionsId"));
+
+                    b.Property<bool>("Bike")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Bike1Q")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bike2Q")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Car")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Car1Q")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Car2Q")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("radio")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuestionsId");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.State", b =>
+                {
+                    b.Property<int>("Sid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Sid"));
+
+                    b.Property<int>("Cid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Sid");
+
+                    b.ToTable("States");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.SubCategory", b =>
+                {
+                    b.Property<int>("SubCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubCategoryId"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MenuId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubCategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubCategoryId");
+
+                    b.ToTable("SubCategories");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Supplier", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ContactNo")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Suppliers");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Models.Teacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Country")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("State")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teachers");
+                });
+
             modelBuilder.Entity("Tasks.Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -71,388 +458,15 @@ namespace Tasks.Migrations
                     b.ToTable("EmployeesAddresses");
                 });
 
-            modelBuilder.Entity("Tasks.Models.Category", b =>
+            modelBuilder.Entity("DataAccessLayer.Models.Experience", b =>
                 {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
-
-                    b.Property<string>("CategoryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryId");
-
-                    b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Tasks.Models.City", b =>
-                {
-                    b.Property<int>("City_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("City_Id"));
-
-                    b.Property<string>("City_Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("S_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("City_Id");
-
-                    b.ToTable("Cities");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Context", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("Enrolled")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Contexts");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Country", b =>
-                {
-                    b.Property<int>("Cid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cid"));
-
-                    b.Property<string>("CName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Cid");
-
-                    b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Csv", b =>
-                {
-                    b.Property<int>("MemberId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberId"));
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EndDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StartDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MemberId");
-
-                    b.ToTable("Csvs");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Customer", b =>
-                {
-                    b.Property<int>("Std_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Std_Id"));
-
-                    b.Property<int>("C_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("City_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("S_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Std_Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Std_Class")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Std_Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Std_Mobile")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Std_Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Std_School")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Std_Id");
-
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Event", b =>
-                {
-                    b.Property<int>("EventId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"));
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Start")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ThemeColor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("EventId");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Experience", b =>
-                {
-                    b.Property<int>("ExperienceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExperienceId"));
-
-                    b.Property<string>("Degree")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PassingYear")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Percentage")
-                        .HasColumnType("int");
-
-                    b.HasKey("ExperienceId");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("Experiences");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Logins");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Menu", b =>
-                {
-                    b.Property<int>("MenuId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MenuId"));
-
-                    b.Property<string>("MenuName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MenuId");
-
-                    b.ToTable("Menus");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Question", b =>
-                {
-                    b.Property<int>("QuestionsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionsId"));
-
-                    b.Property<bool>("Bike")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Bike1Q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Bike2Q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Car")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Car1Q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Car2Q")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("radio")
-                        .HasColumnType("int");
-
-                    b.HasKey("QuestionsId");
-
-                    b.ToTable("Questions");
-                });
-
-            modelBuilder.Entity("Tasks.Models.State", b =>
-                {
-                    b.Property<int>("Sid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Sid"));
-
-                    b.Property<int>("Cid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Sid");
-
-                    b.ToTable("States");
-                });
-
-            modelBuilder.Entity("Tasks.Models.SubCategory", b =>
-                {
-                    b.Property<int>("SubCategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubCategoryId"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SubCategoryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SubCategoryId");
-
-                    b.ToTable("SubCategories");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Supplier", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("ContactNo")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("DOB")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhotoPath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Suppliers");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Teacher", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Country")
-                        .HasColumnType("int");
-
-                    b.Property<int>("State")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teachers");
+                    b.HasOne("DataAccessLayer.Models.Supplier", "Supplier")
+                        .WithMany("Experiences")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("Tasks.EmployeeAddresses", b =>
@@ -466,25 +480,14 @@ namespace Tasks.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("Tasks.Models.Experience", b =>
+            modelBuilder.Entity("DataAccessLayer.Models.Supplier", b =>
                 {
-                    b.HasOne("Tasks.Models.Supplier", "Supplier")
-                        .WithMany("Experiences")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Supplier");
+                    b.Navigation("Experiences");
                 });
 
             modelBuilder.Entity("Tasks.Employee", b =>
                 {
                     b.Navigation("EmployeeAddresses");
-                });
-
-            modelBuilder.Entity("Tasks.Models.Supplier", b =>
-                {
-                    b.Navigation("Experiences");
                 });
 #pragma warning restore 612, 618
         }

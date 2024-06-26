@@ -14,6 +14,7 @@
 12. Language Translator Home
 13. Dapper Crud
 14. MongoDB Crud
+15. ASPCORE Crud
 
 Note:- [.. _context.Menus] and _context.Menus.AsNoTracking().ToList(); <- is the same it's a collection expression/use expression body for method.
 
@@ -174,9 +175,6 @@ MongoDBCrud using Student Controller
 -------------------------------------
 //https://www.youtube.com/watch?v=dsvL22_w88I&ab_channel=ThumbIKR-Shorts <- MongoDB Crud Learing Path
 - using jquery.min.js file in lib -> dist folder.
-
-Core MVC CascadeDropdownList
------------------------------
 
 Learn Linq in Employee Controller
 ----------------------------------
